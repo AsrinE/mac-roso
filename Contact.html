@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MacROSO</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="stylesheet.css">
+<style>
+body {font-family: "Times New Roman", Georgia, Serif;}
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display";
+  letter-spacing: 5px;
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+    <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+      <a href="index.html" class="w3-bar-item w3-button">MacROSO</a>
+      <!-- Right-sided navbar links. Hide them on small screens -->
+      <div class="w3-right w3-hide-small">
+        <a href="Reserveren.html" class="w3-bar-item w3-button">Reserveren</a>
+        <a href="Menu.html" class="w3-bar-item w3-button">Menu</a>
+        <a href="Vestingen.html" class="w3-bar-item w3-button">Vestigingen</a>
+        <a href="Vacaturen.html" class="w3-bar-item w3-button">Vacatures</a>
+        <a href="Contact.html" class="w3-bar-item w3-button">Contact</a>
+        <a href="Medewerkers.html" class="w3-bar-item w3-button">Medewerkers</a>
+        <button class="open-button w3-bar-item w3-button" onclick="openForm()">Inloggen als klant</button>
+  
+        <!-- The form -->
+        <div class="form-popup" id="myForm">
+          <form action="/action_page.php" class="form-container">
+            <h1>Inloggen</h1>
+  
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" required>
+  
+            <label for="psw"><b>Wachtwoord</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+  
+            <button type="submit" class="btn">Inloggen</button>
+            <button type="submit" class="btn">Registeer</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Sluiten</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openForm() {
+    document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+    }
+</script> 
+
+<div class="w3-container w3-padding-64" id="contact">
+    <h1>Contact</h1><br>
+    <p>Heeft u nog vragen wees gerust ze te stellen, en eventueel als u geintereseerd bent voor een solicitatie gesprek voor een van de openestaande vacatures.</p>
+    <form action="/action_page.php" target="_blank">
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Naam" required name="Name"></p>
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="E-mail"></p>
+      <p><input class="w3-input w3-padding-16" type="number" placeholder="telefoonnummer"></p>
+      <p><input class="w3-input w3-padding-16" type="text" placeholder="Omtrent \ Bericht" required name="Message"></p>
+      <p><button class="w3-button w3-light-grey w3-section" type="submit">Versturen</button></p>
+    </form>
+</div>
+
+<hr>
+</body>
+<!-- Footer -->
+<footer class="w3-center w3-light-grey w3-padding-32">
+    <a href="www.twitter.com"><img src="images/733635.png" alt="twitter" height="30px"></a>
+    <a href="www.instagram.com"><img src="images/png-clipart-computer-icons-white-instagram-icon-text-logo.png" alt="instagram" height="30px"></a>
+    <a href="www.facebook.com"><img src="images/png-transparent-facebook-logo-logo-facebook-icon-facebook-logo-brand-social-network-scalable-vector-graphics.png" alt="facebook" height="30px"></a>
+</footer>
+  
+
+</html>

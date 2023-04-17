@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MacROSO</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="stylesheet.css">
+    <style>
+        body {
+            font-family: "Times New Roman", Georgia, Serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Playfair Display";
+            letter-spacing: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar (sit on top) -->
+    <div class="w3-top">
+        <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+            <a href="index.html" class="w3-bar-item w3-button">MacROSO</a>
+            <!-- Right-sided navbar links. Hide them on small screens -->
+            <div class="w3-right w3-hide-small">
+                <a href="Reserveren.html" class="w3-bar-item w3-button">Reserveren</a>
+                <a href="Menu.html" class="w3-bar-item w3-button">Menu</a>
+                <a href="Vestingen.html" class="w3-bar-item w3-button">Vestigingen</a>
+                <a href="Vacaturen.html" class="w3-bar-item w3-button">Vacatures</a>
+                <a href="Contact.html" class="w3-bar-item w3-button">Contact</a>
+                <a href="Medewerkers.html" class="w3-bar-item w3-button">Medewerkers</a>
+                <button class="open-button w3-bar-item w3-button" onclick="openForm()">Inloggen als klant</button>
+
+                <!-- The form -->
+                <div class="form-popup" id="myForm">
+                    <form action="/action_page.php" class="form-container">
+                        <h1>Inloggen</h1>
+
+                        <label for="email"><b>Email</b></label>
+                        <input type="text" placeholder="Enter Email" name="email" required>
+
+                        <label for="psw"><b>Wachtwoord</b></label>
+                        <input type="password" placeholder="Enter Password" name="psw" required>
+
+                        <button type="submit" class="btn">Inloggen</button>
+                        <button type="submit" class="btn">Registeer</button>
+                        <button type="button" class="btn cancel" onclick="closeForm()">Sluiten</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openForm() {
+            document.getElementById("myForm").style.display = "block";
+        }
+
+        function closeForm() {
+            document.getElementById("myForm").style.display = "none";
+        }</script>
+
+    <!-- style="display: flex; flex-flow: row wrap; width: 1600px;" -->
+    <div class="row padding-64" id="menu">
+
+
+        <h1 class="w3-center" style="padding: 100px;">Ons Menu</h1><br>
+        <div class="w3-center">
+
+            <div id="myBtnContainer">
+                <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+                <button class="btn" onclick="filterSelection('Lzout')"> laag in zout</button>
+                <button class="btn" onclick="filterSelection('Hproteine')"> hoog in proteine</button>
+                <button class="btn" onclick="filterSelection('sides')"> </button>
+                <button class="btn" onclick="filterSelection('diner')"> diner</button>
+            </div>
+            <script>
+                filterSelection("all")
+                function filterSelection(c) {
+                    var x, i;
+                    x = document.getElementsByClassName("filterDiv");
+                    if (c == "all") c = "";
+                    // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+                    for (i = 0; i < x.length; i++) {
+                        w3RemoveClass(x[i], "show");
+                        if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+                    }
+                }
+
+                // Show filtered elements
+                function w3AddClass(element, name) {
+                    var i, arr1, arr2;
+                    arr1 = element.className.split(" ");
+                    arr2 = name.split(" ");
+                    for (i = 0; i < arr2.length; i++) {
+                        if (arr1.indexOf(arr2[i]) == -1) {
+                            element.className += " " + arr2[i];
+                        }
+                    }
+                }
+
+                // Hide elements that are not selected
+                function w3RemoveClass(element, name) {
+                    var i, arr1, arr2;
+                    arr1 = element.className.split(" ");
+                    arr2 = name.split(" ");
+                    for (i = 0; i < arr2.length; i++) {
+                        while (arr1.indexOf(arr2[i]) > -1) {
+                            arr1.splice(arr1.indexOf(arr2[i]), 1);
+                        }
+                    }
+                    element.className = arr1.join(" ");
+                }
+
+                // Add active class to the current control button (highlight it)
+                var btnContainer = document.getElementById("myBtnContainer");
+                var btns = btnContainer.getElementsByClassName("btn");
+                for (var i = 0; i < btns.length; i++) {
+                    btns[i].addEventListener("click", function () {
+                        var current = document.getElementsByClassName("active");
+                        current[0].className = current[0].className.replace(" active", "");
+                        this.className += " active";
+                    });
+                }
+            </script>
+            <input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Zoeken" class="w3-button">
+
+        </div>
+        <script>
+            function searchFunction() {
+                // Declare variables
+                var input, filter, ul, li, a, i, txtValue;
+                input = document.getElementById('myInput');
+                filter = input.value.toUpperCase();
+                ul = document.getElementById("myUL");
+                li = ul.getElementsByTagName('li');
+
+                // Loop through all list items, and hide those who don't match the search query
+                for (i = 0; i < li.length; i++) {
+                    a = li[i].getElementsByTagName("a")[0];
+                    txtValue = a.textContent || a.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        li[i].style.display = "";
+                    } else {
+                        li[i].style.display = "none";
+                    }
+                }
+            }
+        </script>
+        <div style="display: flex; flex-flow: row wrap; width: 1600px;" class="col l6 padding-large"
+            style="width: 1600px;">
+
+            <div class="card 1 filterDiv Hproteine diner">
+                <img src="images/entrecote.jpg" alt="entrecote" style="width:100%">
+                <h1>Gegrilde Entrecote</h1>
+                <p class="price">€29.95</p>
+                <p>Verse lap entrecote van hoge kwaliteit</p>
+                <p><button>Meer info</button></p>
+
+            </div>
+            <div class="card 2 filterDiv Hproteine sides">
+                <img src="images/kip.jpg" alt="gefrituurd kip" style="width:100%">
+                <h1>Gefrituurde kipkluifjes</h1>
+                <p class="price">€9.50</p>
+                <p>Krokante stukjes kip, waardoor je bijna je vingers af wilt bijten</p>
+                <p><button>Meer info</button></p>
+            </div>
+            <div class="card 3 filterDiv Hproteine">
+                <img src="images/sucuk tost.jpg" alt="sucuk tosti" style="width:100%">
+                <h1>Turkse Tosti</h1>
+                <p class="price">€8.50</p>
+                <p>Turkse brood met kashkaval kaas en turkse sucuk worst</p>
+
+                <button id="sucukBtn">Meer info</button>
+
+                <!-- The Modal -->
+                <div id="sucukModal" class="modal">
+                    <div style="margin-top: 200px;" class="modal-content">
+                        <div class="modal-header">
+                            <span class="close">&times;</span>
+                            <h2>Turkse Tosti</h2>
+                        </div>
+                        <div class="modal-body">
+                            <p>Turkse brood met kashkaval kaas en turkse sucuk worst</p>
+                            <p>Ingredienten:
+                            <div class="popup" onclick="broodFunction()">Turkse brood,
+                                <span class="popuptext" id="broodPopup">
+                                    <table>
+                                        <tr>
+                                            <th>Nutrient</th>
+                                            <th>Amount per 100g</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Calories</td>
+                                            <td>267 kcal</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Protein</td>
+                                            <td>9.5 g</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fat</td>
+                                            <td>2.7 g</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Carbohydrates</td>
+                                            <td>52 g</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fiber</td>
+                                            <td>1.6 g</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sodium</td>
+                                            <td>525 mg</td>
+                                        </tr>
+                                    </table>
+                                </span>
+                            </div>
+                            <div class="popup" onclick="kaasFunction()">kashkaval kaas,
+                                <span class="popuptext" id="kaasPopup">
+                                    <table>
+                                        <tr>
+                                            <th>Nutrient</th>
+                                            <th>Amount per 100g</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Calories</td>
+                                            <td>356 kcal</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Protein</td>
+                                            <td>24.8 g</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fat</td>
+                                            <td>27.5 g</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Carbohydrates</td>
+                                            <td>2.5 g</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fiber</td>
+                                            <td>0 g</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sodium</td>
+                                            <td>1,650 mg</td>
+                                        </tr>
+                                    </table>
+                                </span>
+                            </div>
+                            <div class="popup" onclick="sucukFunction()">Sucuk
+                                <span class="popuptext" id="sucukPopup">
+                                    <table>
+                                        <tr>
+                                            <th>Nutrient</th>
+                                            <th>Amount per 100g</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Calories</td>
+                                            <td>475 kcal</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Protein</td>
+                                            <td>27.5 g</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fat</td>
+                                            <td>40 g</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Carbohydrates</td>
+                                            <td>0.5 g</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fiber</td>
+                                            <td>0 g</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sodium</td>
+                                            <td>1,200 mg</td>
+                                        </tr>
+                                    </table>
+                                </span>
+                            </div>
+                            </p>
+                            <p>
+                            <table>
+                                <tr>
+                                    <th>Nutrient</th>
+                                    <th>Amount per 100g</th>
+                                </tr>
+                                <tr>
+                                    <td>Calories</td>
+                                    <td>1098 kcal</td>
+                                </tr>
+                                <tr>
+                                    <td>Protein</td>
+                                    <td>61.8 g</td>
+                                </tr>
+                                <tr>
+                                    <td>Fat</td>
+                                    <td>69.2 g</td>
+                                </tr>
+                                <tr>
+                                    <td>Carbohydrates</td>
+                                    <td>55.5 g</td>
+                                </tr>
+                                <tr>
+                                    <td>Fiber</td>
+                                    <td>1.6 g</td>
+                                </tr>
+                                <tr>
+                                    <td>Sodium</td>
+                                    <td>3,375 mg</td>
+                                </tr>
+                            </table>
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Modal content -->
+
+                    <script>
+                        // Get the modal
+                        var modal = document.getElementById("sucukModal");
+
+                        // Get the button that opens the modal
+                        var btn = document.getElementById("sucukBtn");
+
+                        // Get the <span> element that closes the modal
+                        var span = document.getElementsByClassName("close")[0];
+
+                        // When the user clicks on the button, open the modal
+                        btn.onclick = function () {
+                            modal.style.display = "block";
+                        }
+
+                        // When the user clicks on <span> (x), close the modal
+                        span.onclick = function () {
+                            modal.style.display = "none";
+                        }
+
+                        // When the user clicks anywhere outside of the modal, close it
+                        window.onclick = function (event) {
+                            if (event.target == modal) {
+                                modal.style.display = "none";
+                            }
+                        }
+                        // When the user clicks on <div>, open the popup
+                        function sucukFunction() {
+                            var popup = document.getElementById("sucukPopup");
+                            popup.classList.toggle("show");
+                        }
+                        function kaasFunction() {
+                            var popup = document.getElementById("kaasPopup");
+                            popup.classList.toggle("show");
+                        }
+                        function broodFunction() {
+                            var popup = document.getElementById("broodPopup");
+                            popup.classList.toggle("show");
+                        }
+                    </script>
+                </div>
+            </div>
+            <div class="card 4 filterDiv diner">
+                <img src="images/macho nacho.jpg" alt="nacho burger" style="width:100%">
+                <h1>Macho Nacho</h1>
+                <p class="price">€19.50</p>
+                <p>Een malse rundvlees burger met nacho's, spicy cheddar, jalapeños, guacamole, sla, tomaat en
+                    limoenmayonaise.</p>
+                <p><button>Meer info</button></p>
+            </div>
+            <div class="card 5 filterDiv Lzout sides">
+                <img src="images/friet.jpg" alt="friet" style="width:100%">
+                <h1>Portie friet</h1>
+                <p class="price">€4.50</p>
+                <p>Portie friet met saus naar keuze</p>
+                <p><button>Meer info</button></p>
+            </div>
+            <div class="card 6 filterDiv">
+                <img src="images/İskender_Kebap.jpg" alt="doner kebab met tomaten saus" style="width:100%">
+                <h1>Iskender kebab</h1>
+                <p class="price">€19.95</p>
+                <p>Een laagje turks brood met daarover heen doner kebab, tomaten saus, gesmolten boter en met een side
+                    van turkse yogurt.</p>
+                <p><button>Meer info</button></p>
+            </div>
+        </div>
+
+    </div>
+
+    <hr>
+    <!-- Footer -->
+    <footer class="w3-center w3-light-grey w3-padding-32">
+        <a href="www.twitter.com"><img src="images/733635.png" alt="twitter" height="30px"></a>
+        <a href="www.instagram.com"><img src="images/png-clipart-computer-icons-white-instagram-icon-text-logo.png"
+                alt="instagram" height="30px"></a>
+        <a href="www.facebook.com"><img
+                src="images/png-transparent-facebook-logo-logo-facebook-icon-facebook-logo-brand-social-network-scalable-vector-graphics.png"
+                alt="facebook" height="30px"></a>
+    </footer>
+
+</body>
+
+</html>

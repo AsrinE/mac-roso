@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MacROSO</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="stylesheet.css">
+
+<style>
+body {font-family: "Times New Roman", Georgia, Serif;}
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display";
+  letter-spacing: 5px;
+}
+
+</style>
+</head>
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+    <a href="index.html" class="w3-bar-item w3-button">MacROSO</a>
+    <!-- Right-sided navbar links. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="#reserveren" class="w3-bar-item w3-button">Reserveren</a>
+      <a href="#menu" class="w3-bar-item w3-button">Menu</a>
+      <a href="#vestigingen" class="w3-bar-item w3-button">Vestigingen</a>
+      <a href="#vacatures" class="w3-bar-item w3-button">Vacatures</a>
+      <a href="Contact.html" class="w3-bar-item w3-button">Contact</a>
+      <a href="Medewerkers.html" class="w3-bar-item w3-button">Medewerkers</a>
+      <button class="open-button w3-bar-item w3-button" onclick="openForm()">Inloggen als klant</button>
+
+      <!-- The form -->
+      <div class="form-popup" id="myForm">
+        <form action="/action_page.php" class="form-container">
+          <h1>Inloggen</h1>
+
+          <label for="email"><b>Email</b></label>
+          <input type="text" placeholder="Enter Email" name="email" required>
+
+          <label for="psw"><b>Wachtwoord</b></label>
+          <input type="password" placeholder="Enter Password" name="psw" required>
+
+          <button type="submit" class="btn">Inloggen</button>
+          <button type="submit" class="btn">Registeer</button>
+          <button type="button" class="btn cancel" onclick="closeForm()">Sluiten</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}</script>
+
+<!-- Header -->
+<header class="w3-display-container w3-content w3-wide" style="max-width:1600px;min-width:500px" id="home">
+  <img class="w3-image" src="/images/crowne-plaza-budapest-6938989936-2x1.jpg" width="1600" height="800">
+  <div class="w3-display-bottomleft w3-padding-large w3-opacity w3-white">
+    <h1 class="w3-xxlarge">MacROSO</h1>
+  </div>
+</header>
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:1100px">
+
+  <!-- About Section -->
+  <div class="w3-row w3-padding-64" id="about">
+    <div class="w3-col m6 w3-padding-large w3-hide-small">
+     <img src="/images/SucukHeader.jpg" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
+    </div>
+
+    <div class="col m6 padding-large">
+      <h1 class="center">Over ons</h1><br>
+      <h5 class="center">Traditie sinds 1990</h5>
+      <p class="large">MacROSO is in 1990 begonnnen als een kleine familie restaurant en is nu na jaren hard werk gegroeid tot een keten die door het hele land te vinden is, met de altijd veranderende menu en daarmee ook smaken die je kan beleven houden wij de klanten elke keer weer tevreden en vandaar dat we een grote groep vaste klanten hebben die wij graag willen bedanken voor hun steun door de jaren heen.</p>
+    </div>
+  </div>
+  
+  <hr>
+  
+  <!-- Menu Section -->
+  <div class="row padding-64" id="menu">
+    <div class="col l6 padding-large">
+      <h1  class="center">Ons Menu</h1><br>
+      <p>Wij hebben een heel uitgebreid menu met alles van vlees tot vis en vegan opties, ook is er op verzoek mogelijkheid voor gezondere alternatieven voor ingredienten.</p>
+      <p>Bekijk het Menu hier:<a href="Menu.html" class="w3-bar-item w3-button">Menu</a></p> 
+      <img src="images/İskender_Kebap.jpg" alt="Menu" width="600" style="align-content: end;">
+    </div>
+    
+  </div>
+  
+  <hr>
+
+  <!-- reserveer Section -->
+  <div class="row padding-64" id="reserveren">
+    <div class="col l6 padding-large">
+      <h1 class="center">Reserveer Nu</h1><br>
+      <p>Wij hebben altijd voor u een tafeltje vrij staan dus twijfel niet langer en plan je bezoek bij ons snel.</p>
+      <p>Reserveer hier:<a href="Reserveren.html" class="w3-bar-item w3-button">Reserveren</a></p> 
+      <div class="w3-col l6 w3-padding-large">
+    </div>
+    </div>
+    
+  </div>
+
+  <hr>
+<!-- vestigingen Section -->
+  <div class="row padding-64" id="vestigingen">
+    <div class="col l6 padding-large">
+      <h1 class="center">Onze vestigingen</h1><br>
+      <p>Wij hebben meerdere vestigingen door heel Nederland heen om ze allemaal te bekijken klik hier:<a href="Vestingen.html" class="w3-bar-item w3-button">Vestigingen</a></p>
+      
+      <div class="w3-col l6 w3-padding-large">
+    </div>
+    </div>
+    
+  </div>
+  <hr>
+
+  <!-- vacatures Section -->
+  <div class="row padding-64" id="vacatures">
+    <div class="col l6 padding-large">
+      <h1 class="center">Werken bij MacROSO</h1><br>
+      <p>Zoek je nog een leuke bijbaantje kom dan onze team helpen, we hebben veel diverse vacatures open staat, neem een kijkje:<a href="Vacaturen.html" class="w3-bar-item w3-button">Vacatures</a></p>
+      <div class="w3-col l6 w3-padding-large">  
+    </div>
+    </div>
+    
+  </div>
+
+<!-- End page content -->
+</div>
+
+<hr>
+<!-- Footer -->
+<footer class="w3-center w3-light-grey w3-padding-32">
+  <a href="www.twitter.com"><img src="images/733635.png" alt="twitter" height="30px"></a>
+  <a href="www.instagram.com"><img src="images/png-clipart-computer-icons-white-instagram-icon-text-logo.png" alt="instagram" height="30px"></a>
+  <a href="www.facebook.com"><img src="images/png-transparent-facebook-logo-logo-facebook-icon-facebook-logo-brand-social-network-scalable-vector-graphics.png" alt="facebook" height="30px"></a>
+</footer>
+
+</body>
+</html>
